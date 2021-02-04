@@ -2,7 +2,7 @@
 export default class MainService  {
     targetEl: HTMLElement;
     dataList: string;
-    constructor({target}:{target:any}) {
+    constructor(target:HTMLElement) {
         this.targetEl= target;
         this.dataList = '';
     }
@@ -19,15 +19,19 @@ export default class MainService  {
                 </div>`
     }
 
-    on() {
-        document.querySelector("#my-number")?.addEventListener("click", ()=> {
-            const clickCountEl = document.querySelector("#click-count");
-            if(!clickCountEl)  return; 
+    clickHandler({target} : {target:HTMLElement}) : void{
+        const clickCountEl = target.closest('#my-number')?.querySelector("#click-count");
+        console.log(clickCountEl)
+        if(!clickCountEl)  return; 
 
-            let count : number;
-            count = parseInt(clickCountEl.textContent as string) + 1;
-            clickCountEl.textContent = String(count);
-        })
+        let count : number;
+        count = parseInt(clickCountEl.textContent as string) + 1;
+        clickCountEl.textContent = String(count);
     }
 
-}
+    on() {
+        const el = this.targetEl.querySelector("#my-number");
+        if(el) el.addEventListener("click", this.clickHandler.bind(this));
+    }
+
+};
