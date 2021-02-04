@@ -13,7 +13,21 @@ export default class MainService  {
     }
 
     render(data:string):string {
-        return `<span>${data}</span>`
+        return `<div id="my-number">
+                    <div>${data}</div>
+                    <div id="click-count">0</div>
+                </div>`
+    }
+
+    on() {
+        document.querySelector("#my-number")?.addEventListener("click", ()=> {
+            const clickCountEl = document.querySelector("#click-count");
+            if(!clickCountEl)  return; 
+
+            let count : number;
+            count = parseInt(clickCountEl.textContent as string) + 1;
+            clickCountEl.textContent = String(count);
+        })
     }
 
 }

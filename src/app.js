@@ -8,4 +8,6 @@ window.addEventListener("DOMContentLoaded", ()=> {
     const subHtml = service.init(datalist);
 
     targetEl.innerHTML += `datalist is ${subHtml}`;
+
+    service.on();
 })
