@@ -2,7 +2,7 @@
 export default class MainService  {
     targetEl: HTMLElement;
     dataList: string;
-    constructor({target}) {
+    constructor({target}:{target:any}) {
         this.targetEl= target;
         this.dataList = '';
     }
