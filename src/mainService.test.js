@@ -43,7 +43,8 @@ test('clickevent', () => {
     div.querySelector("#my-number").addEventListener("click", service.clickHandler);
 
     //when
-    getByTestId(div, 'my-number').click(2)
+    getByTestId(div, 'my-number').click()
+    getByTestId(div, 'my-number').click()
     getByTestId(div, 'my-number').click()
 
     //then
